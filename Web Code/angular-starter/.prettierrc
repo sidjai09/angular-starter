@@ -1,0 +1,22 @@
+{
+  "useTabs": false,
+  "printWidth": 140,
+  "tabWidth": 2,
+  "bracketSpacing": false,
+  "endOfLine": "lf",
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 70,
+        "useTabs": false,
+        "trailingComma": "none",
+        "arrowParens": "avoid",
+        "proseWrap": "never"
+      }
+    }
+  ]
+}
