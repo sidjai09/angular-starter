@@ -10,7 +10,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --loglevel warn --write \"**/*.{html,yml,ts,tsx,js,css,json,scss,md}\"",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "http-server": "http-server",
+    "prepwa": "ng build -c=qa",
+    "pwa": "http-server -p 8080 -c-1 dist/angular-starter"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +25,8 @@
     "@angular/platform-browser": "~11.0.9",
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
+    "@angular/service-worker": "~11.0.9",
+    "http-server": "^0.12.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
