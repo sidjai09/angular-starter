@@ -6,11 +6,9 @@ import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
-import {UserDashboardComponent} from './user-dashboard/user-dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, AdminDashboardComponent, UserDashboardComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
