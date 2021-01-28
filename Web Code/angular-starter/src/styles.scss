@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* import files from scss folder */
+@import '~src/assets/scss/variable';
+@import '~src/assets/scss/main';
+@import '~src/assets/scss/form';
+@import '~src/assets/scss/responsive';
+
+/* Import other files here */
