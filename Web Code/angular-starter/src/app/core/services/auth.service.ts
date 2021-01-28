@@ -31,4 +31,10 @@ export class AuthService {
     localStorage.setItem('userId', authResult.userId);
     localStorage.setItem('loggedIn', 'Y');
   }
+
+  getCountrys(): any {
+    console.log('####Get Countries API called###');
+
+    return this.apiService.get('api/country');
+  }
 }

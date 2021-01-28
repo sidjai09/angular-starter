@@ -8,9 +8,13 @@ import {AuthService} from 'src/app/core/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  countryList: any[] = [];
+
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCountry();
+  }
 
   onLogin(loginForm: NgForm): void {
     const user = {email: loginForm.form.value.email, password: loginForm.form.value.password};
@@ -19,5 +23,16 @@ export class LoginComponent implements OnInit {
     this.authService.setLogin(user).subscribe((success: any) => {
       console.log('Login success', success);
     });
+  }
+
+  getCountry(): void {
+    this.authService.getCountrys().subscribe(
+      (success: any) => {
+        this.countryList = success.data.country;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 }
