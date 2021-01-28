@@ -10,9 +10,12 @@ import {AuthService} from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit {
   countryList: any[] = [];
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    console.log('###Login Constructor Called');
+  }
 
   ngOnInit(): void {
+    console.log('###Login ngOnInit Called');
     this.getCountry();
   }
 
