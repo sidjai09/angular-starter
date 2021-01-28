@@ -46,14 +46,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // getCountry(): void {
-  //   this.authService.getCountrys().subscribe(
-  //     (success: any) => {
-  //       this.countryList = success.data.country;
-  //     },
-  //     (error: any) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
+  getCountry(): void {
+    this.authService.getCountrys().subscribe(
+      (success: any) => {
+        this.countryList = success.data.country;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
 }

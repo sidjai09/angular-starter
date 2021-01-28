@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {map} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {map, tap} from 'rxjs/operators';
 import {ApiService} from './api.service';
 
 @Injectable({
@@ -7,6 +8,7 @@ import {ApiService} from './api.service';
 })
 export class AuthService {
   isLogin = false;
+  cache: any = {};
 
   constructor(private apiService: ApiService) {}
 
@@ -35,6 +37,18 @@ export class AuthService {
   getCountrys(): any {
     console.log('####Get Countries API called###');
 
-    return this.apiService.get('api/country');
+    if (!!this.cache.getCountrys) {
+      console.log('####Get Countries API from cache###');
+      return of(this.cache.getCountrys);
+    }
+
+    return this.apiService.get('api/country').pipe(
+      tap((res) => {
+        if (res.statusMsg === 'success') {
+          this.cache.getCountrys = res;
+        }
+        return res;
+      })
+    );
   }
 }
