@@ -6,8 +6,8 @@ export const environment = {
   production: false,
 
   platform: 'local',
-  serverUrl: 'localhost/serverURL',
-  clientUrl: 'localhost:4200',
+  serverUrl: 'http://54.67.105.19/STARAPI/public/',
+  clientUrl: 'http://localhost:4200/STARWEB/',
   version: '1.0',
   Date: '2021'
 };
