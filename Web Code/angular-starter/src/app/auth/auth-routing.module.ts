@@ -1,5 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+
+import {CountryListResolver} from '../core/resolvers/country-list.resolver';
+
 import {AuthComponent} from './auth.component';
 import {LoginComponent} from './login/login.component';
 
@@ -10,7 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        resolve: {countryList: CountryListResolver}
       }
     ]
   }

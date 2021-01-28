@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 import {AuthService} from 'src/app/core/services/auth.service';
 
 @Component({
@@ -10,13 +11,30 @@ import {AuthService} from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit {
   countryList: any[] = [];
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute) {
     console.log('###Login Constructor Called');
+
+    this.activatedRoute.data.subscribe(
+      (success) => {
+        console.log('Resolver success', success);
+
+        if (!!success.countryList) {
+          if (success.countryList.statusMsg === 'success') {
+            console.log(success.countryList.data);
+
+            this.countryList = success.countryList.data.country;
+          }
+        }
+      },
+      (error) => {
+        console.error('Error in resolver', error);
+      }
+    );
   }
 
   ngOnInit(): void {
     console.log('###Login ngOnInit Called');
-    this.getCountry();
+    // this.getCountry();
   }
 
   onLogin(loginForm: NgForm): void {
@@ -28,14 +46,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getCountry(): void {
-    this.authService.getCountrys().subscribe(
-      (success: any) => {
-        this.countryList = success.data.country;
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
+  // getCountry(): void {
+  //   this.authService.getCountrys().subscribe(
+  //     (success: any) => {
+  //       this.countryList = success.data.country;
+  //     },
+  //     (error: any) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 }
